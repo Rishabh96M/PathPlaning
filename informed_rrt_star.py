@@ -87,10 +87,6 @@ class IRrtStar:
                 if self.InGoalRegion(x_new):
                     if not self.utils.is_collision(x_new, self.x_goal):
                         self.X_soln.add(x_new)
-                        # new_cost = self.Cost(x_new) + self.Line(x_new, self.x_goal)
-                        # if new_cost < c_best:
-                        #     c_best = new_cost
-                        #     x_best = x_new
 
             if k % 20 == 0:
                 self.animation(x_center=x_center, c_best=c_best,
@@ -118,7 +114,8 @@ class IRrtStar:
 
         dist_table = [(nd.x - node.x) ** 2 + (nd.y - node.y)
                       ** 2 for nd in nodelist]
-        X_near = [nodelist[ind] for ind in range(len(dist_table)) if dist_table[ind] <= r ** 2
+        X_near = [nodelist[ind] for ind in range(len(dist_table)) if
+                  dist_table[ind] <= r ** 2
                   and not self.utils.is_collision(nodelist[ind], node)]
 
         return X_near
@@ -133,8 +130,9 @@ class IRrtStar:
             while True:
                 x_ball = self.SampleUnitBall()
                 x_rand = np.dot(np.dot(C, L), x_ball) + x_center
-                if self.x_range[0] + self.delta <= x_rand[0] <= self.x_range[1] - self.delta and \
-                        self.y_range[0] + self.delta <= x_rand[1] <= self.y_range[1] - self.delta:
+                if self.x_range[0] + self.delta <= x_rand[0] <= \
+                        self.x_range[1] - self.delta and self.y_range[0] + \
+                        self.delta <= x_rand[1] <= self.y_range[1]-self.delta:
                     break
             x_rand = Node((x_rand[(0, 0)], x_rand[(1, 0)]))
         else:
@@ -153,8 +151,10 @@ class IRrtStar:
         delta = self.delta
 
         if np.random.random() > self.goal_sample_rate:
-            return Node((np.random.uniform(self.x_range[0] + delta, self.x_range[1] - delta),
-                         np.random.uniform(self.y_range[0] + delta, self.y_range[1] - delta)))
+            return Node((np.random.uniform
+                         (self.x_range[0] + delta, self.x_range[1] - delta),
+                         np.random.uniform(self.y_range[0] + delta,
+                                           self.y_range[1] - delta)))
 
         return self.x_goal
 

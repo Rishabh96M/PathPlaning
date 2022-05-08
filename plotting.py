@@ -69,9 +69,9 @@ class Plotting:
                 if node.parent:
                     plt.plot([node.parent.x, node.x], [
                              node.parent.y, node.y], "-g")
-                    plt.gcf().canvas.mpl_connect('key_release_event',
-                                                 lambda event:
-                                                 [exit(0) if event.key == 'escape' else None])
+                    plt.gcf().canvas.mpl_connect(
+                        'key_release_event', lambda event:
+                        [exit(0) if event.key == 'escape' else None])
                     if count % 10 == 0:
                         plt.pause(0.001)
         else:
@@ -94,8 +94,9 @@ class Plotting:
                     plt.plot([V2[k].x, V2[k].parent.x], [
                              V2[k].y, V2[k].parent.y], "-g")
 
-            plt.gcf().canvas.mpl_connect('key_release_event',
-                                         lambda event: [exit(0) if event.key == 'escape' else None])
+            plt.gcf().canvas.mpl_connect(
+                'key_release_event', lambda event:
+                [exit(0) if event.key == 'escape' else None])
 
             if k % 2 == 0:
                 plt.pause(0.001)
