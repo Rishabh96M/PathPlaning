@@ -290,8 +290,8 @@ class IRrtStar:
 
 
 if __name__ == '__main__':
-    x_start = (18, 8)  # Starting node
-    x_goal = (37, 18)  # Goal node
+    x_start = (10, 10)  # Starting node
+    x_goal = (90, 90)  # Goal node
 
     rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 12, 1000)
     rrt_star.planning()
