@@ -123,8 +123,8 @@ class IRrtStar:
     def Sample(self, c_max, c_min, x_center, C):
         if c_max < np.inf:
             r = [c_max / 2.0,
-                 math.sqrt(c_max ** 2 - c_min ** 2) / 2.0,
-                 math.sqrt(c_max ** 2 - c_min ** 2) / 2.0]
+                 math.sqrt(abs(c_max ** 2 - c_min ** 2)) / 2.0,
+                 math.sqrt(abs(c_max ** 2 - c_min ** 2)) / 2.0]
             L = np.diag(r)
 
             while True:
@@ -273,7 +273,7 @@ class IRrtStar:
 
     @staticmethod
     def draw_ellipse(x_center, c_best, dist, theta):
-        a = math.sqrt(c_best ** 2 - dist ** 2) / 2.0
+        a = math.sqrt(abs(c_best ** 2 - dist ** 2)) / 2.0
         b = c_best / 2.0
         angle = math.pi / 2.0 - theta
         cx = x_center[0]
@@ -290,8 +290,8 @@ class IRrtStar:
 
 
 if __name__ == '__main__':
-    x_start = (10, 10)  # Starting node
+    x_start = (10, 60)  # Starting node
     x_goal = (90, 90)  # Goal node
 
-    rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 12, 1000)
+    rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 10, 1000)
     rrt_star.planning()
