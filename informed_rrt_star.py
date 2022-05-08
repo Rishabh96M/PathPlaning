@@ -281,7 +281,7 @@ class IRrtStar:
         t = np.arange(0, 2 * math.pi + 0.1, 0.1)
         x = [a * math.cos(it) for it in t]
         y = [b * math.sin(it) for it in t]
-        rot = Rot.from_euler('z', -angle).as_dcm()[0:2, 0:2]
+        rot = Rot.from_euler('z', -angle).as_matrix()[0:2, 0:2]
         fx = rot @ np.array([x, y])
         px = np.array(fx[0, :] + cx).flatten()
         py = np.array(fx[1, :] + cy).flatten()
@@ -289,13 +289,9 @@ class IRrtStar:
         plt.plot(px, py, linestyle='--', color='darkorange', linewidth=2)
 
 
-def main():
+if __name__ == '__main__':
     x_start = (18, 8)  # Starting node
     x_goal = (37, 18)  # Goal node
 
     rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 12, 1000)
     rrt_star.planning()
-
-
-if __name__ == '__main__':
-    main()
