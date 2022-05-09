@@ -298,7 +298,7 @@ class IRrtStar:
 
 
 if __name__ == '__main__':
-    x_start = (60, 10)  # Starting node
+    x_start = (30, 50)  # Starting node
     x_goal = (90, 90)  # Goal node
 
     rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 10, 1000)

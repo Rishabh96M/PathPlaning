@@ -23,9 +23,9 @@ class Env:
     def obs_rectangle():
         r = 10
         obs_rectangle = [
-            [0.25*r, 4.25*r, 1.5*r, 1.5*r],
-            [3.75*r, 4.25*r, 2.5*r, 1.5*r],
-            [7.25*r, 2*r, 1.5*r, 2*r]
+            [0.25*r, 4.25*r, 1.6*r, 1.6*r],
+            [3.75*r, 4.25*r, 2.6*r, 1.6*r],
+            [7.25*r, 2*r, 1.6*r, 2.1*r]
         ]
         return obs_rectangle
 
@@ -33,8 +33,8 @@ class Env:
     def obs_circle():
         r = 10
         obs_cir = [
-            [2*r, 2*r, 1*r],
-            [2*r, 8*r, 1*r]
+            [2*r, 2*r, 1.1*r],
+            [2*r, 8*r, 1.1*r]
         ]
 
         return obs_cir
