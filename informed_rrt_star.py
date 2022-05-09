@@ -7,6 +7,7 @@ import matplotlib.patches as patches
 import env
 import plotting
 import utils
+import ros_talker
 
 
 class Node:
@@ -98,7 +99,7 @@ class IRrtStar:
         plt.plot([x for x, _ in self.path], [y for _, y in self.path], '-r')
         plt.pause(0.01)
         plt.show()
-        return self.path
+        return self.path[::-1]
 
     def Steer(self, x_start, x_goal):
         dist, theta = self.get_distance_and_angle(x_start, x_goal)
@@ -304,3 +305,5 @@ if __name__ == '__main__':
     path = rrt_star.planning()
     print('Optimal Path Found:')
     print(path)
+    ros_talker.send_vel(path, radius=3.8, w_dist=35.4, step=1)
+    print('simulation complete')
