@@ -23,7 +23,7 @@ In a new terminal run the Informed RRT star algorithm
 ```
 cd PathPlaning
 python3 informed_rrt_star.py
-```
+```eefef
 
 To see the simulation, close the matplotlib screen after the plotting is complete.<br>
 You will be notified on the terminal after the simulation is completed.<br>
