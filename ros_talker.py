@@ -35,14 +35,13 @@ def send_vel(path, radius, w_dist, step):
         th = -round(th * 180/3.14)
         dist = round(math.dist(path[i], path[i-1]))
         print('goint to point: ', path[i])
-        print(th, dist)
         cnt = 0
         while cnt < abs(th*2):
             cnt += 1
             if th < 0:
-                ang_v = -0.12
+                ang_v = -0.11
             else:
-                ang_v = 0.12
+                ang_v = 0.11
             publishMsg(msg, 0, ang_v, pub)
         cnt = 0
         while cnt < dist*10:

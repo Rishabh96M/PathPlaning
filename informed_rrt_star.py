@@ -305,5 +305,6 @@ if __name__ == '__main__':
     path = rrt_star.planning()
     print('Optimal Path Found:')
     print(path)
+    print('Starting Simulation')
     ros_talker.send_vel(path, radius=3.8, w_dist=35.4, step=1)
-    print('simulation complete')
+    print('Simulation complete')
