@@ -98,6 +98,7 @@ class IRrtStar:
         plt.plot([x for x, _ in self.path], [y for _, y in self.path], '-r')
         plt.pause(0.01)
         plt.show()
+        return self.path
 
     def Steer(self, x_start, x_goal):
         dist, theta = self.get_distance_and_angle(x_start, x_goal)
@@ -277,6 +278,8 @@ class IRrtStar:
     @staticmethod
     def draw_ellipse(x_center, c_best, dist, theta):
         temp = c_best ** 2 - dist ** 2
+        if temp < 0:
+            temp = 0.01
         a = math.sqrt(temp) / 2.0
         b = c_best / 2.0
         angle = math.pi / 2.0 - theta
@@ -298,4 +301,6 @@ if __name__ == '__main__':
     x_goal = (90, 90)  # Goal node
 
     rrt_star = IRrtStar(x_start, x_goal, 1, 0.10, 10, 1000)
-    rrt_star.planning()
+    path = rrt_star.planning()
+    print('Optimal Path Found:')
+    print(path)
